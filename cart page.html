@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Cart</title>
+
+<style>
+body{font-family:Poppins;background:#f6f6f6;margin:0;}
+nav{display:flex;justify-content:space-between;background:#111;color:#fff;padding:20px 40px;}
+.cart-box{padding:40px;}
+.item{background:white;padding:20px;border-radius:12px;margin-bottom:20px;display:flex;gap:20px;}
+.item img{width:120px;border-radius:8px;}
+.total{font-size:22px;margin-top:30px;font-weight:600;}
+.btn{background:black;color:white;padding:15px 30px;font-size:18px;border:none;border-radius:8px;cursor:pointer;margin-top:20px;}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+    <h2>Samar Fashion</h2>
+    <div>
+        <a href="index.html" style="color:white">Home</a>
+        <a href="checkout.html" style="color:white">Checkout</a>
+    </div>
+</nav>
+
+<div class="cart-box" id="cart-box"></div>
+
+<script src="data.js"></script>
+<script src="cart.js"></script>
+
+<script>
+
+let box = document.getElementById("cart-box");
+
+let html = "";
+let total = 0;
+
+cart.forEach(item => {
+    total += item.price;
+    html += `
+    <div class='item'>
+        <img src="${item.image}">
+        <div>
+            <h3>${item.name}</h3>
+            <p>Size: ${item.size}</p>
+            <p>Price: ₹${item.price}</p>
+        </div>
+    </div>`;
+});
+
+html += `<p class='total'>Total: ₹${total}</p>
+<button class='btn' onclick="window.location.href='checkout.html'">Proceed to Checkout</button>`;
+
+box.innerHTML = html;
+
+</script>
+
+</body>
+</html>
