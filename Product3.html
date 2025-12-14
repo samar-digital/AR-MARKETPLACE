@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Page</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+<header class="header">
+    <div class="logo">Samar Fashion Hub</div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../cart.html">Cart 🛒</a>
+        <a href="../login.html">Login</a>
+        <a href="../signup.html">Signup</a>
+    </nav>
+</header>
+
+
+<section class="pdp-container fade-slide">
+  
+  <div class="pdp-img img-placeholder"></div>
+
+  <div class="pdp-info">
+    <h1>Product Name</h1>
+    <p class="pdp-price">₹ Price</p>
+    <p class="pdp-desc">Description (short)</p>
+
+    <label>Size:</label>
+    <select>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+    </select>
+
+    <label>Quantity:</label>
+    <input id="qty" type="number" min="1" value="1">
+
+    <button class="btn" onclick="addToCart()">Add to Cart</button>
+
+  </div>
+</section>
+
+<script>
+function addToCart() {
+  let qty = document.getElementById("qty").value;
+  window.location.href = "../cart.html?product=Product+Name&price=Price&qty=" + qty;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+/* ------------------------------
+   GLOBAL SETTINGS
+--------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #ffffff;
+  color: #111;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ------------------------------
+   HEADER
+--------------------------------*/
+.header {
+  width: 100%;
+  padding: 20px 50px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header .logo {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.header nav a {
+  margin-left: 25px;
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
+}
+
+.header nav a:hover {
+  color: #0084ff;
+}
+
+/* ------------------------------
+   HERO SECTION
+--------------------------------*/
+.hero {
+  width: 100%;
+  height: 80vh;
+  background: linear-gradient(to bottom, #f9f9f9, #fff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 50px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+.btn {
+  background: #111;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #0084ff;
+}
+
+/* ------------------------------
+   CATEGORY SECTION
+--------------------------------*/
+.categories {
+  padding: 80px 50px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.cat-card {
+  height: 180px;
+  background: #eee;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ------------------------------
+   FEATURED PRODUCTS
+--------------------------------*/
+.featured {
+  padding: 80px 50px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.product-card {
+  padding: 15px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0,0,0,0.1);
+}
+
+.img-placeholder {
+  width: 100%;
+  height: 230px;
+  background: #ddd;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* ------------------------------
+   PDP PAGE
+--------------------------------*/
+.pdp-container {
+  display: flex;
+  padding: 70px;
+  gap: 60px;
+}
+
+.pdp-img {
+  width: 45%;
+  height: 500px;
+  background: #ddd;
+  border-radius: 10px;
+}
+
+.pdp-info {
+  width: 45%;
+}
+
+.pdp-info h1 {
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.pdp-price {
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.pdp-desc {
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+select, input {
+  width: 180px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* ------------------------------
+   CART PAGE
+--------------------------------*/
+.cart-container {
+  padding: 70px 50px;
+}
+
+.cart-item {
+  padding: 20px;
+  border-radius: 8px;
+  background: #f7f7f7;
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+/* ------------------------------
+   CHECKOUT PAGE
+--------------------------------*/
+.checkout {
+  padding: 70px 50px;
+}
+
+.checkout-box {
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+/* ------------------------------
+   ANIMATIONS
+--------------------------------*/
+.fade-slide {
+  animation: fadeSlide 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+  animation: slideUp 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hover-zoom:hover {
+  transform: scale(1.05);
+  transition: 0.25s;
+}
+
+/* ------------------------------
+   RESPONSIVE
+--------------------------------*/
+@media (max-width: 900px) {
+
+  .pdp-container {
+    flex-direction: column;
+    padding: 40px;
+  }
+
+  .pdp-img,
+  .pdp-info {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+}

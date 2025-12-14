@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Page</title>
+
+<style>
+body{font-family:Poppins, sans-serif;background:#f7f7f7;margin:0;}
+nav{display:flex;justify-content:space-between;background:#111;color:#fff;padding:20px 40px;}
+nav a{color:#fff;text-decoration:none;margin-left:20px;}
+.container{display:flex;padding:50px;gap:40px;}
+img{width:420px;border-radius:12px;}
+.title{font-size:32px;font-weight:700;}
+.price{font-size:28px;margin:10px 0;}
+.strike{text-decoration:line-through;color:grey;font-size:18px;}
+.desc{margin:20px 0;line-height:1.5;}
+select{padding:10px;margin:10px 0;}
+.btn{background:black;color:white;padding:15px 30px;border:none;font-size:16px;border-radius:8px;cursor:pointer;}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+    <h2>Samar Fashion</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </div>
+</nav>
+
+<div class="container">
+    <img id="product-img">
+
+    <div>
+        <h1 class="title" id="product-name"></h1>
+        <h2 class="price">₹<span id="product-price"></span> 
+            <span class="strike">₹<span id="product-oldprice"></span></span>
+        </h2>
+
+        <p class="desc" id="product-desc"></p>
+
+        <label>Size:</label>
+        <select id="size-select"></select>
+
+        <br><br>
+
+        <button class="btn" id="add-btn">Add to Cart</button>
+    </div>
+</div>
+
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script>
+
+// Get ID from URL
+const url = new URLSearchParams(window.location.search);
+const id = url.get("id");
+
+const product = products.find(p => p.id == id);
+
+// Fill PDP fields
+document.getElementById("product-img").src = product.image;
+document.getElementById("product-name").textContent = product.name;
+document.getElementById("product-price").textContent = product.price;
+document.getElementById("product-oldprice").textContent = product.oldPrice;
+document.getElementById("product-desc").textContent = product.description;
+
+// Add sizes
+let sizeSelect = document.getElementById("size-select");
+product.sizes.forEach(s => {
+    sizeSelect.innerHTML += `<option>${s}</option>`;
+});
+
+// Add to cart
+document.getElementById("add-btn").onclick = () => {
+    addToCart(product.id, sizeSelect.value);
+};
+
+</script>
+
+</body>
+</html>

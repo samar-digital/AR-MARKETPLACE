@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Product Detail - Samar Fashion</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {margin:0; font-family:'Inter', sans-serif; background:#f7f7f7;}
+    header {background:white; padding:20px 40px; display:flex; justify-content:space-between; align-items:center;
+        border-bottom:1px solid #eee; position:sticky; top:0; z-index:100;}
+    header h1 {font-weight:700;}
+
+    .container {
+        max-width:1200px; margin:50px auto; display:flex; gap:40px; padding:20px;
+    }
+
+    .left img {width:450px; border-radius:10px;}
+
+    .right h2 {font-size:32px; margin-bottom:10px;}
+    .price {font-size:26px; font-weight:700; color:#0a7cff; margin:10px 0;}
+
+    .desc {line-height:1.6; margin:15px 0; font-size:16px;}
+
+    .qty-box {display:flex; align-items:center; gap:10px; margin:20px 0;}
+    .qty-btn {width:35px; height:35px; background:#0a7cff; border:none; color:white;
+        font-size:20px; cursor:pointer; border-radius:6px;}
+    .qty-number {font-size:20px; font-weight:600;}
+
+    .add-btn {
+        background:black; color:white; padding:15px 25px; border:none; font-size:18px;
+        cursor:pointer; border-radius:10px; margin-top:20px; font-weight:600;
+    }
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>Samar Fashion</h1>
+    <nav>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="left">
+        <img id="pImg" src="https://via.placeholder.com/450x500?text=Hoodie" />
+    </div>
+
+    <div class="right">
+        <h2 id="pName">Oversized Hoodie</h2>
+        <p class="price" id="pPrice">₹899</p>
+
+        <p class="desc">
+            Premium oversized hoodie crafted for streetwear lovers. Soft cotton blend,
+            heavy GSM, perfect for winter vibes.
+        </p>
+
+        <div class="qty-box">
+            <button class="qty-btn" onclick="changeQty(-1)">-</button>
+            <span class="qty-number" id="qty">1</span>
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+
+        <button class="add-btn" onclick="addToCart()">Add to Cart</button>
+    </div>
+</div>
+
+<script>
+let qty = 1;
+
+function changeQty(x){
+    qty = Math.max(1, qty + x);
+    document.getElementById("qty").textContent = qty;
+}
+
+// Product details — future mein dynamic ban sakta hai
+let product = {
+    id: 1,
+    name: "Oversized Hoodie",
+    price: 899,
+    img: "https://via.placeholder.com/450x500?text=Hoodie"
+};
+
+// Add to cart (localStorage)
+function addToCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // check if already exists
+    let existing = cart.find(item => item.id === product.id);
+
+    if(existing){
+        existing.qty += qty;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            img: product.img,
+            qty: qty
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to cart!");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">Samar Fashion Hub</div>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+
+<section class="cart-container fade-slide">
+<h1>Your Cart</h1>
+
+<!-- EMPTY container: cart will load here dynamically -->
+<div id="cartItems"></div>
+
+<div id="emptyMessage" style="display:none;">
+  <p>Your cart is empty.</p>
+</div>
+
+<a id="checkoutBtn" href="checkout.html" class="btn" style="display:none;">
+  Proceed to Checkout
+</a>
+
+</section>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+let name = urlParams.get("product");
+let price = urlParams.get("price");
+let qty = urlParams.get("qty");
+
+if (name && price && qty) {
+    document.getElementById("cartItems").innerHTML = `
+      <div class="cart-item">
+        <p><b>${name}</b></p>
+        <p>Price: ₹${price}</p>
+        <p>Qty: ${qty}</p>
+        <p>Total: ₹${price * qty}</p>
+      </div>
+    `;
+    document.getElementById("checkoutBtn").style.display = "inline-block";
+} else {
+    document.getElementById("emptyMessage").style.display = "block";
+}
+</script>
+
+</body>
+</html>

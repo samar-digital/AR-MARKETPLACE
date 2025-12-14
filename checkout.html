@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Samar Fashion Hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Checkout</h1>
+
+<form id="checkout-form">
+    <input type="text" id="name" placeholder="Full Name" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <textarea id="address" placeholder="Address" required></textarea><br>
+    <button type="submit">Place Order</button>
+</form>
+
+<script>
+document.getElementById('checkout-form').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const order = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        address: document.getElementById('address').value,
+        items: JSON.parse(localStorage.getItem('cart')) || [],
+        total: 999 // example total, calculate dynamically in real scenario
+    };
+
+    fetch('http://localhost:3000/api/order', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(order)
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message + ' Order ID: ' + data.orderId);
+        localStorage.removeItem('cart');
+        window.location.href = 'account-dashboard.html'; // redirect to dashboard
+    })
+    .catch(err => console.log(err));
+});
+</script>
+
+</body>
+</html>
