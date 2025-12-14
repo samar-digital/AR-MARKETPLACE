@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elegant Shoes - Trendy Outlook</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+<header class="header">
+    <div class="logo">Samar Fashion Hub</div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../cart.html">Cart 🛒</a>
+        <a href="../login.html">Login</a>
+        <a href="../signup.html">Signup</a>
+    </nav>
+</header>
+
+<section class="pdp-container fade-slide">
+
+  <div class="pdp-img img-placeholder">
+      <!-- Replace with actual image later -->
+  </div>
+
+  <div class="pdp-info">
+    <h1>Elegant Shoes - Trendy Outlook</h1>
+
+    <p class="pdp-price">₹549 <span class="discount-tag">40% OFF</span></p>
+
+    <p class="pdp-desc">
+      Classic elegant footwear designed for a clean and fashionable daily look.
+      <br><br>
+      <b>Features:</b><br>
+      ✔ Trendy Outlook <br>
+      ✔ Lightweight & Comfortable <br>
+      ✔ Suitable for Daily Wear <br>
+      ✔ COD Available <br>
+      ✔ Free Delivery  
+      <br><br>
+      <b>Original Marketplace Listing:</b><br>
+      <a href="https://www.facebook.com/marketplace/item/715782944516609/" 
+         target="_blank" 
+         style="color:#007bff; text-decoration:underline;">
+         View on Facebook Marketplace
+      </a>
+    </p>
+
+    <label>Size:</label>
+    <select>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+    </select>
+
+    <label>Quantity:</label>
+    <input id="qty" type="number" min="1" value="1">
+
+    <button class="btn" onclick="addToCart()">Add to Cart</button>
+
+  </div>
+</section>
+
+<script>
+function addToCart() {
+  let qty = document.getElementById("qty").value;
+  window.location.href =
+    "../cart.html?product=Elegant+Shoes&price=549&qty=" + qty;
+}
+</script>
+
+</body>
+</html>
